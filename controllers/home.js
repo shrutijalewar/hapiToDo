@@ -1,3 +1,7 @@
-/**
- * Created by Shruti on 11/17/14.
- */
+'use strict';
+
+
+
+exports.index = function(request, reply){
+    reply('Hello world!');
+};
