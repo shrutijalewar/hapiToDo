@@ -1,14 +1,15 @@
 'use strict';
-//var Task = require('../models/task');
+var Task = require('../models/task');
 
 exports.all = function(request, reply){
-    //Task.all();
-    reply(request.payload);
+    Task.all(function(err, tasks){
+        reply(tasks);
+    });
+
 };
 
 exports.create = function(request, reply){
-    //model;
-    reply(request.payload);
+    Task.add(request.payload).then(function(task){reply('success')});
 };
 
 exports.update = function(request, reply){
