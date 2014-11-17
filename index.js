@@ -6,9 +6,11 @@ var server = new Hapi.Server(port);
 var mongoose = require('mongoose');
 mongoose.connect(db);
 var home = require('./controllers/home');
-//var tasks = require('/controllers/tasks');
-//var priorities = require('/controllers/tasks');
+var tasks = require('./controllers/tasks');
+var priorities = require('./controllers/tasks');
 
+
+//HOME ROUTES
 server.route({
     config: {
         description: 'This is the default home page.'
@@ -18,50 +20,59 @@ server.route({
     handler: home.index
 });
 
-
-/*
 server.route({
     method: 'GET',
-    path: '/{name}',
-    handler: function (request, reply) {
-        reply('Hello, ' + request.params.name + '! ' + request.query.limit);
-    },
-    config: {
-        validate: {
-            params: {
-                //should match the req.params
-                //validates payloads(body), params, headers, queries
-                name: Joi.string().min(3).max(10)
-            },
-            query: {
-                limit: Joi.number().required().min(9)
-            }
-        }
-    }
+    path: '/about',
+    handler: home.about
 });
 
+
+
+//TASK ROUTES
 server.route({
     method: 'GET',
-    path: '/images/{params*}', //as many slashes as you want
-    handler: {
-        directory: {
-            path: 'static/images'
-        }
-    }
+    path: '/tasks',
+    handler: tasks.all
 });
 
 server.route({
     method: 'POST',
-    path: '/dogs', //as many slashes as you want
-    handler: function(request, reply){
-        //just like req.body
-        var doggy = new Dog(request.payload);
-        doggy.save(function (err) {
-            reply(doggy);
-        });
-    }
+    path: '/tasks',
+    handler: tasks.create
 });
-*/
+
+server.route({
+    method: 'PUT',
+    path: '/tasks/{id}',
+    handler: tasks.update
+});
+
+server.route({
+    method: 'DELETE',
+    path: '/tasks/{id}',
+    handler: tasks.remove
+});
+
+server.route({
+    method: 'GET',
+    path: '/tasks/{id}',
+    handler: tasks.show
+});
+
+
+//PRIORITY ROUTES
+server.route({
+    method: 'POST',
+    path: '/priorities',
+    handler: priorities.create
+});
+
+server.route({
+    method: 'GET',
+    path: '/priorities',
+    handler: priorities.show
+});
+
 
 
 //Loading plugins and THEN running a server
