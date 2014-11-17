@@ -9,7 +9,12 @@ exports.all = function(request, reply){
 };
 
 exports.create = function(request, reply){
-    Task.add(request.payload).then(function(task){reply('success')});
+    console.log(request.payload);
+    Task.add(request.payload).then(function(task){
+        reply('success');
+    }, function(err){
+        replay(err);
+    });
 };
 
 exports.update = function(request, reply){
