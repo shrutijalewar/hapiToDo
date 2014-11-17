@@ -1,9 +1,8 @@
-
 var port = process.env.PORT;
 var db = process.env.DB;
 var Hapi = require('hapi');
 var server = new Hapi.Server(port);
-var Joi = require('joi');
+//var Joi = require('joi');
 var mongoose = require('mongoose');
 mongoose.connect(db);
 var home = require('./controllers/home');
@@ -12,7 +11,7 @@ var home = require('./controllers/home');
 
 server.route({
     config: {
-        description: 'This is the default home page.',
+        description: 'This is the default home page.'
     },
     method: 'GET',
     path: '/',
@@ -92,5 +91,3 @@ function startServer(err){
         server.log('info', 'Server running at: ' + server.info.uri);
     });
 }
-
-
