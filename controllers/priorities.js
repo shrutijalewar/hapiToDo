@@ -4,13 +4,14 @@
 var Priority = require('../models/priority');
 
 exports.create = function (request, reply){
-    Priority.add(request.payload, function(){
-        reply('err');
-
+    Priority.add(request.payload).then(function(priority){
+        reply(priority);
     });
 };
 
 
 exports.show = function (request, reply){
-    reply(200);
+    Priority.show(function(err, priorities){
+        reply(priorities);
+    });
 };

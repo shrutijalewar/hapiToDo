@@ -7,7 +7,7 @@ var mongoose = require('mongoose');
 mongoose.connect(db);
 var home = require('./controllers/home');
 var tasks = require('./controllers/tasks');
-var priorities = require('./controllers/tasks');
+var priorities = require('./controllers/priorities');
 
 
 //HOME ROUTES
