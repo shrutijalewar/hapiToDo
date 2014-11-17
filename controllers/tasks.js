@@ -2,8 +2,10 @@
 var Task = require('../models/task');
 
 exports.all = function(request, reply){
-    //Task.all();
-    reply(request.payload);
+    Task.all(function(err, tasks){
+        reply(tasks);
+    });
+
 };
 
 exports.create = function(request, reply){
