@@ -1,16 +1,16 @@
-/**
- * Created by Shruti on 11/17/14.
- */
 
 'use strict';
 
-//var Priority = require('../models/priority');
+var Priority = require('../models/priority');
 
 exports.create = function (request, reply){
-    reply(200);
+    Priority.add(request.payload, function(){
+        reply('err');
+
+    });
 };
 
 
 exports.show = function (request, reply){
-    reply(request.payload);
+    reply(200);
 };
