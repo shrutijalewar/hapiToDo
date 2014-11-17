@@ -26,8 +26,6 @@ server.route({
     handler: home.about
 });
 
-
-
 //TASK ROUTES
 server.route({
     method: 'GET',
