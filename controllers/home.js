@@ -1,7 +1,11 @@
+/* global exports */
+
 'use strict';
 
+exports.index = function (request, reply) {
+    reply('Home');
+};
 
-
-exports.index = function(request, reply){
-    reply('Hello world!');
+exports.about = function (request, reply) {
+    reply('About');
 };
