@@ -1,3 +1,11 @@
-/**
- * Created by Shruti on 11/17/14.
- */
+/* global exports */
+
+'use strict';
+
+exports.index = function (request, reply) {
+    reply('Home');
+};
+
+exports.about = function (request, reply) {
+    reply('About');
+};
