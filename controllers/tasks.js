@@ -5,27 +5,27 @@ exports.all = function(request, reply){
     Task.all(function(err, tasks){
         reply(tasks);
     });
-
 };
 
 exports.create = function(request, reply){
-    console.log(request.payload);
-    Task.add(request.payload).then(function(task){
+    Task.add(request.payload).then(function(){
         reply('success');
-    }, function(err){
-        replay(err);
     });
 };
 
 exports.update = function(request, reply){
-    //model;
-    reply(request.payload);
+    Task.update(request.params.id, request.payload, function(){
+        reply('success');
+    });
 };
 exports.remove = function(request, reply){
-    //model;
-    reply(request.payload);
+    Task.removeTask(request.params.id, function(){
+        reply('removed task');
+    });
 };
+
 exports.show = function(request, reply){
-    //model;
-    reply(request.payload);
+    Task.findTask(request.params.id, function(err, task){
+        reply(task);
+    });
 };
