@@ -37,6 +37,14 @@ server.route({
     method: 'POST',
     path: '/tasks',
     handler: tasks.create
+    config: {
+        validate: {
+            params: {
+                name: Joi.string().min(3).max(14)
+            },
+
+        }
+    }
 });
 
 server.route({
@@ -63,6 +71,12 @@ server.route({
     method: 'POST',
     path: '/priorities',
     handler: priorities.create
+    config: {
+        validate: {
+            params: {
+                name: Joi.string().min(3).max(14)
+            },`
+    }
 });
 
 server.route({
